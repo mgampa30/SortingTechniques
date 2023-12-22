@@ -7,19 +7,23 @@ class SelectionSort {
        }
     }
     public static void selectionSort(int[] nums){
-        int start = 0;
-        int end = nums.length -1;
-        int pivot =start;
-        while(start<end){
-            for(int i = start;i<nums.length;i++){
-                if(nums[pivot] > nums[i]){
-                    pivot = i;
+       int n = nums.length; 
+       for (int i = 0; i < n - 1; i++) {
+            // Assume the current index is the minimum
+            int minIndex = i;
+
+            // Find the index of the minimum element in the remaining unsorted array
+            for (int j = i + 1; j < n; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
                 }
             }
-            int temp = nums[start];
-            nums[start] = nums[pivot];
-            nums[pivot] = temp;
-            start++;
+
+            // Swap the found minimum element with the element at index i
+            int temp = nums[minIndex];
+            nums[minIndex] = nums[i];
+            nums[i] = temp;
         }
     }
 }
+
